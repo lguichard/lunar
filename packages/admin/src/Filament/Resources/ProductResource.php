@@ -55,11 +55,6 @@ class ProductResource extends BaseResource
         return __('lunarpanel::global.sections.catalog');
     }
 
-    public static function getNavigationBadge(): ?string
-    {
-        return static::getModel()::where('status', '=', 'published')->count();
-    }
-
     public static function getRecordSubNavigation(Page $page): array
     {
         return $page->generateNavigationItems([
