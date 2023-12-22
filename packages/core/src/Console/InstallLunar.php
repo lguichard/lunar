@@ -14,6 +14,7 @@ use Lunar\Models\Collection;
 use Lunar\Models\CollectionGroup;
 use Lunar\Models\Country;
 use Lunar\Models\Currency;
+use Lunar\Models\Customer;
 use Lunar\Models\CustomerGroup;
 use Lunar\Models\Language;
 use Lunar\Models\Product;
@@ -151,6 +152,15 @@ class InstallLunar extends Command
                     'position' => 1,
                 ]);
 
+                $customerGroup = AttributeGroup::create([
+                    'attributable_type' => Customer::class,
+                    'name' => collect([
+                        'en' => 'Details',
+                    ]),
+                    'handle' => 'customer_details',
+                    'position' => 1,
+                ]);
+
                 Attribute::create([
                     'attribute_type' => Product::class,
                     'attribute_group_id' => $group->id,
@@ -209,6 +219,24 @@ class InstallLunar extends Command
                     'attribute_type' => Collection::class,
                     'attribute_group_id' => $collectionGroup->id,
                     'position' => 2,
+                    'name' => [
+                        'en' => 'Description',
+                    ],
+                    'handle' => 'description',
+                    'section' => 'main',
+                    'type' => TranslatedText::class,
+                    'required' => false,
+                    'default_value' => null,
+                    'configuration' => [
+                        'richtext' => true,
+                    ],
+                    'system' => false,
+                ]);
+
+                Attribute::create([
+                    'attribute_type' => Customer::class,
+                    'attribute_group_id' => $customerGroup->id,
+                    'position' => 1,
                     'name' => [
                         'en' => 'Description',
                     ],
