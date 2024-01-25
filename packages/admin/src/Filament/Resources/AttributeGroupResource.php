@@ -15,6 +15,8 @@ use Lunar\Models\AttributeGroup;
 
 class AttributeGroupResource extends BaseResource
 {
+    use \Lunar\Admin\Plugins\EditRecordTranslatable;
+    
     protected static ?string $permission = 'settings:manage-attributes';
 
     protected static ?string $model = AttributeGroup::class;

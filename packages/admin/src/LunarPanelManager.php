@@ -212,6 +212,7 @@ class LunarPanelManager
             ])
             ->plugins([
                 \Leandrocfe\FilamentApexCharts\FilamentApexChartsPlugin::make(),
+                \Lunar\Admin\Plugins\LunarTranslatablePlugin::make(),
             ])
             ->discoverLivewireComponents(__DIR__.'/Livewire', 'Lunar\\Admin\\Livewire')
             ->livewireComponents([

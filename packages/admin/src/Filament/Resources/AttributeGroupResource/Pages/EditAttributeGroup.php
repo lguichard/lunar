@@ -14,6 +14,7 @@ class EditAttributeGroup extends BaseEditRecord
     {
         return [
             Actions\DeleteAction::make(),
+            \Lunar\Admin\Plugins\LocaleSwitcher::make(),
         ];
     }
 }
