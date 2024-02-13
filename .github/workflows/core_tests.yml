@@ -20,6 +20,7 @@ jobs:
         with:
           php-version: ${{ matrix.php }}
           extensions: mbstring, intl, amqp, dba
+          tools: composer:v2, phpunit:${{ matrix.php }}
 
       - name: Get composer cache directory
         id: composer-cache
