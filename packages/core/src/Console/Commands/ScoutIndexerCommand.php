@@ -69,6 +69,12 @@ class ScoutIndexerCommand extends Command
             return self::FAILURE;
         }
 
+        // Execute setup meilisearch
+        if (config('scout.driver') == 'meilisearch' &&
+            $this->getApplication()->has('lunar:meilisearch:setup')) {
+            $this->call('lunar:meilisearch:setup');
+        }
+
         // Return searchable models from config
         $searchables = config('lunar.search.models', []);
 
