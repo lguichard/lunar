@@ -70,9 +70,10 @@ class ScoutIndexerCommand extends Command
         }
 
         // Execute setup meilisearch
-        if (config('scout.driver') == 'meilisearch' &&
-            $this->getApplication()->has('lunar:meilisearch:setup')) {
-            $this->call('lunar:meilisearch:setup');
+        if (config('scout.driver') == 'meilisearch') {
+            if (! $this->getApplication()->has('lunar:meilisearch:setup')) {
+                $this->components->warn("Laravel scout config to use meilisearch driver, you would like to install and setup lunarphp/meilisearch package.");
+            }
         }
 
         // Return searchable models from config
