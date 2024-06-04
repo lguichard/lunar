@@ -79,7 +79,7 @@ class MediaRelationManager extends BaseRelationManager
             ->headerActions([
                 Tables\Actions\CreateAction::make()
                     ->using(function (array $data, string $model): Model {
-                        return $this->getOwnerRecord()->addMedia($data['media'])
+                        return $this->getOwnerRecord()->addMediaFromString($data['media']->get())
                             ->withCustomProperties([
                                 'name' => $data['custom_properties']['name'],
                                 'primary' => $data['custom_properties']['primary'],
